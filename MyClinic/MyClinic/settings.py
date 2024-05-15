@@ -16,20 +16,20 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 import os
-# SECRET_KEY = os.environ.get("SECRET_KEY")
-# DEBUG = os.environ.get("DEBUG","False").lower() == "true"
-# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+SECRET_KEY = os.environ.get("SECRET_KEY")
+DEBUG = os.environ.get("DEBUG","False").lower() == "true"
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-j8ql4u=((9ceg_36zl1b+1hvdj!mcfsllofe9@a$4k1^$nsy)_'
+# SECRET_KEY = 'django-insecure-j8ql4u=((9ceg_36zl1b+1hvdj!mcfsllofe9@a$4k1^$nsy)_'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -94,8 +94,8 @@ DATABASES = {
 }
 import dj_database_url
 database_url = os.environ.get("DATABASE_URL")
-DATABASES ["default"] = dj_database_url.parse("postgres://clinic_db_2y21_user:kWmhm3aGC2VfJFC7EzJ36qidcs4kLl10@dpg-cp2jh0fsc6pc73a6sic0-a.oregon-postgres.render.com/clinic_db_2y21")
-# DATABASES ["default"] = dj_database_url.parse(database_url)
+# DATABASES ["default"] = dj_database_url.parse("postgres://clinic_db_2y21_user:kWmhm3aGC2VfJFC7EzJ36qidcs4kLl10@dpg-cp2jh0fsc6pc73a6sic0-a.oregon-postgres.render.com/clinic_db_2y21")
+DATABASES ["default"] = dj_database_url.parse(database_url)
 
 
 # Password validation
