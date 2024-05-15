@@ -1,0 +1,98 @@
+{% extends 'base_Clinic.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    form {
+        margin: 20px;
+        padding: 10px;
+        border: 5px solid #e855bb;
+        border-radius: 10px;
+    }
+
+    .form-group {
+        margin: 10px 0;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        font-size: large;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group select {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    button[type="submit"] {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+</style>
+
+{% for message in messages %}
+{% if message.tags == 'error' %}
+<div class="alert alert-dismissible fade show" role="alert" style="background-color: rgb(226, 23, 9); color: rgb(255, 254, 254);">
+    <strong>Message:</strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% else %}
+<div class="alert alert-dismissible fade show" role="alert" style="background-color: rgb(9, 226, 103); color: rgb(11, 2, 2);">
+    <strong>Message:</strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif%}
+{% endfor %}
+
+<h1>Create a New Patient</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="form-group">
+        <label for="name">Name:</label>
+        {{ form.name }}
+    </div>
+    <div class="form-group">
+        <label for="address">Address:</label>
+        {{ form.address }}
+    </div>
+    <div class="form-group">
+        <label for="phone_number">Phone Number:</label>
+        {{ form.phone_number }}
+    </div>
+    <div class="form-group">
+        <label for="category">Category:</label>
+        {{ form.category }}
+    </div>
+    <div class="form-group">
+        <label for="age">Age:</label>
+        {{ form.age }}
+    </div>
+    <div class="form-group">
+        <label for="date_of_visit">Date of Visit:</label>
+        <input type="date" id="date_of_visit" name="date_of_visit" value="{{ form.date_of_visit.value|date:'Y-m-d' }}" required>
+    </div>
+    <div class="form-group">
+        <label for="follow_up_status">Follow-up Status:</label>
+        <input type="checkbox" style="width: 30px; height: 30px;" id="follow_up_status" name="follow_up_status" {% if form.follow_up_status.value %}checked{% endif %}>
+    </div>
+    <div class="form-group">
+        <label for="examination_or_operation_fees">Examination/Operation Fees:</label>
+        {{ form.examination_or_operation_fees }}
+    </div>
+    <button type="submit">Create</button>
+</form>
+
+{% endblock %}

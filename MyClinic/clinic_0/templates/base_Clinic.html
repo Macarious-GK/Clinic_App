@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+      <title>MyClinic</title>
+      <meta name="description" content="A brief description" />
+      <meta
+        name="author"
+        content="clinic app"
+      />
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  
+      <!-- Load favicon -->
+      <link
+        rel="shortcut icon"
+        type="image/png"
+        href="{% static 'img/facicon.ico' %}"
+      />
+    <!-- Include your CSS files here -->
+    <link
+      rel="preload"
+      as="style"
+      href="{% static 'css/style.css' %}"
+      onload="this.rel = 'stylesheet'"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla&family=Markazi+Text:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <header>
+  <img src="{% static 'img/header.PNG' %}" />
+  </header>
+    <nav>
+      <ul>
+        <li><a href="{% url 'home' %}">Welcome {{user}}. Nice to have u back! last login: {{user.last_login}}</a></li>
+        <li><a href="{% url 'baselogout' %}">**Logout, see u soon**</a></li>
+      </ul>
+    </nav>
+<body>
+
+{% block content %} 
+
+{% endblock %}
+
+<footer>
+    <article>
+        <img src="{% static 'img/footer.PNG' %}" alt="Clinic Logo" />
+    </article>
+    <article class="footer-info">
+        <div >
+            <p>G_S_Clinic</p>
+            <address>
+                123 Clinic Street,<br>
+                City, State, ZIP<br>
+                Country
+            </address>
+            <p>Phone: 123-456-7890</p>
+            <p>Email: info@g_s_clinic.com</p>
+        </div>
+    </article>
+</footer>
+
+</body>
+</html>

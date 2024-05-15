@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #message {
+            font-size: 24px;
+            color: #007bff;
+        }
+
+        #exit-button {
+            background-color: #ff5733;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #exit-button:hover {
+            background-color: #ff3000;
+        }
+    </style>
+<body>
+    <div class="container">
+        <h1>Goodbye and Thanks!</h1>
+        <p id="message">You have been successfully logged out.</p>
+        <button id="exit-button">Exit</button>
+    </div>
+
+    <script>
+        document.getElementById("exit-button").addEventListener("click", function() {
+            window.location.href = "{% url 'welcome' %}";
+        
+    });
+    </script>
+{% endblock %}
+

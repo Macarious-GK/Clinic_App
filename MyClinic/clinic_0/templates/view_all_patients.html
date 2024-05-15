@@ -1,0 +1,147 @@
+{% extends 'base_Clinic.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+
+    .collapsible {
+  background-color: #383838;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 30px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #388f67;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #76c9a2;
+}
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        overflow-x: auto; /* Enable horizontal scrolling on small screens */
+    }
+    th, td {
+        border: 2px solid #060505;
+        text-align: left;
+        padding: 8px;
+        border-radius: 10px;
+        border-color: black;
+        background-color: #ffffff;
+        white-space: nowrap; /* Prevent text wrapping */
+    }
+    th {
+        background-color: #d887de;
+    }
+    .search-container {
+        margin-bottom: 20px;
+    }
+    .search-container form input[type=text],
+    .search-container form input[type=number],
+    .search-container form input[type=date] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+
+    /* Hide ID column on small screens */
+    @media screen and (max-width: 600px) {
+        th:first-child,
+        td:first-child {
+            display: none;
+        }
+    }
+</style>
+
+<button type="button" class="collapsible">Search !!</button>
+<div class="content">
+  
+<h2>Patients</h2>
+<div class="search-container">
+    <form method="GET">
+        <label for="name">Name:</label>
+        <input type="text" id= 'name' name="name" placeholder="Search for patient names...">
+        <label for="cat">Category:</label>
+        <input type="text" id= 'cat'name="category" placeholder="Search for patient category...">
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date">
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date">
+        <button type="submit">Search</button>
+    </form>
+</div>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Category</th>
+            <th>Age</th>
+            <th>Date of Visit</th>
+            <th>Follow-up Status</th>
+            <th>Examination/Operation Fees</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for patient in patients %}
+        <tr>
+            <td>{{ patient.id }}</td>
+            <td>{{ patient.name }}</td>
+            <td>{{ patient.address }}</td>
+            <td>{{ patient.phone_number }}</td>
+            <td>{{ patient.category }}</td>
+            <td>{{ patient.age }}</td>
+            <td>{{ patient.date_of_visit }}</td>
+            <td>{{ patient.follow_up_status }}</td>
+            <td>{{ patient.examination_or_operation_fees }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="8"><strong>Total Fees:</strong></td>
+            <td><strong>{{ total_fees }}</strong></td>
+        </tr>
+        <tr>
+            <td colspan="8"><strong>Total Records:</strong></td>
+            <td><strong>{{ total_count }}</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+{% endblock %}

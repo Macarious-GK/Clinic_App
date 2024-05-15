@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+{% if user.is_authenticated %}
+<div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <h4 class="modal-title">Confirm</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+          <p>You are already logged in as {{user.username}}, you need to log out before logging in as a different user.</p>
+      </div>
+      <div class="modal-footer">
+          <button type="button" id = "retrunhome"class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <a id = "logout" class="btn btn-primary mx-2">Logout</a>
+      </div>
+  </div>
+</div>
+{% block stylecontent %} 
+<script>
+  document.getElementById("logout").addEventListener("click", function() {
+  window.location.href = "{% url 'baselogout' %}";
+  });
+  document.getElementById("retrunhome").addEventListener("click", function() {
+  window.location.href = "{% url 'home' %}";
+  });
+</script>
+{% endblock%}
+
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    {% endfor %}
+
+    {% else %}
+    <h2 class="fw-bold mb-5">Log In to your account</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <br>
+    <p class="text-center">Don't have an account? <a href="{% url 'registerpage'%}">Join Us Now!!</a>.</p>
+    <!-- <p class="text-center">Forget your Password <a href="{% url 'password-reset'%}">Reset Password</a>.</p> -->
+    <p class="text-center">Forget your Password <a href="">Reset Password</a>.</p>
+
+
+    {% endif %}
+
+{% endblock %}

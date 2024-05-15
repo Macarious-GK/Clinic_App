@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+{% for message in messages %}
+<div class="alert alert-dismissible fade show" role="alert" style="background-color: pink; color: white;">
+    <strong>Message:</strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+<div id="validationAlert" class="alert alert-dismissible fade" role="alert" style="background-color: rgb(203, 27, 56); color: white; display: none;">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<h3>Create your account!</h3>
+<form method="post" onsubmit="return validateForm();">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Create A Username (use only letters and numbers)" Required>
+    </div>
+    <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter Your First Name" Required>
+    </div>
+    <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Your Last Name" Required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email Address" Required>
+    </div>
+    <div class="form-group">
+        <label for="pass1">Password</label>
+        <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Create Your Password" Required>
+    </div>
+    <div class="form-group">
+        <label for="pass2">Confirm Password</label>
+        <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirm Your Password" Required>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+<p class="text-center">If you already have an account, <a href="{% url 'baselogin'%}">login</a> instead.</p>
+{% endblock %}
+
+
+{% block stylecontent %} 
+<script>
+    function validateForm() {
+        var usernameInput = document.getElementById("username");
+        var fnameInput = document.getElementById("fname");
+        var lnameInput = document.getElementById("lname");
+        var emailInput = document.getElementById("email");
+        var pass1Input = document.getElementById("pass1");
+        var pass2Input = document.getElementById("pass2");
+    
+        var usernameValue = usernameInput.value;
+        var fnameValue = fnameInput.value;
+        var lnameValue = lnameInput.value;
+        var emailValue = emailInput.value;
+        var pass1Value = pass1Input.value;
+        var pass2Value = pass2Input.value;
+    
+        // Use regular expressions for more comprehensive validation
+        var alphanumericRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9]+$/;
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/; // At least one digit, one lowercase, one uppercase, and 6+ characters
+    
+        // Username validation
+        if (!alphanumericRegex.test(usernameValue)) {
+            alert("Username must be alphanumeric (use only letters and numbers).");
+            return false;
+        }
+    
+        // First Name validation
+        if (fnameValue.trim() === "") {
+            alert("First Name is required.");
+            return false;
+        }
+    
+        // Last Name validation
+        if (lnameValue.trim() === "") {
+            alert("Last Name is required.");
+            return false;
+        }
+    
+        // Email validation
+        if (!emailRegex.test(emailValue)) {
+            alert("Invalid email address.");
+            return false;
+        }
+    
+        // Password validation
+        if (!passwordRegex.test(pass1Value)) {
+            alert("Password must contain at least one digit, one lowercase letter, one uppercase letter, and be 6 or more characters long.");
+            return false;
+        }
+    
+        // Confirm Password validation
+        if (pass1Value !== pass2Value) {
+            alert("Passwords do not match.");
+            return false;
+        }
+    
+        return true;
+    }
+    </script>
+    
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

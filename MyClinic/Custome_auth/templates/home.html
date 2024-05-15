@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cool Home Page</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Cool Website</h1>
+        <p>This is the home page of my awesome website.</p>
+        <button id="myButton">Click Me </button> 
+        <button id="logoutbutton">  Logout</button>
+
+    </div>
+
+    <div class="register side"><div class="title">register</div><form action="" autocomplete="nope"><div class="inputAndIndicator"><input class="usernameInput" placeholder="username" autocomplete="new-username"><div class="statusIndicator">
+        <div class="indicator level1 hidden" data-option-id="available" data-balloon-pos="up">
+          <i class="fas fa-fw fa-check "></i>
+        </div>
+        
+        <div class="indicator level-1 hidden" data-option-id="unavailable" data-balloon-pos="up">
+          <i class="fas fa-fw fa-times "></i>
+        </div>
+        
+        <div class="indicator level-1 hidden" data-option-id="taken" data-balloon-pos="up">
+          <i class="fas fa-fw fa-times "></i>
+        </div>
+        
+        <div class="indicator level0 hidden" data-option-id="checking" data-balloon-pos="up">
+          <i class="fas fa-fw fa-circle-notch fa-spin"></i>
+        </div>
+        </div></div> <div class="inputAndIndicator"><input type="email" class="emailInput" placeholder="email" autocomplete="new-email"><div class="statusIndicator">
+        <div class="indicator level1 hidden" data-option-id="valid" data-balloon-pos="up">
+          <i class="fas fa-fw fa-check "></i>
+        </div>
+        
+        <div class="indicator level-1 hidden" data-option-id="invalid" data-balloon-pos="up">
+          <i class="fas fa-fw fa-times "></i>
+        </div>
+        
+        <div class="indicator level1 hidden" data-option-id="typo" data-balloon-pos="up">
+          <i class="fas fa-fw fa-exclamation-triangle "></i>
+        </div>
+        
+        <div class="indicator level1 hidden" data-option-id="edu" data-balloon-pos="up">
+          <i class="fas fa-fw fa-exclamation-triangle "></i>
+        </div>
+        </div></div> <div class="inputAndIndicator"><input type="email" class="verifyEmailInput" placeholder="verify email" autocomplete="verify-email"><div class="statusIndicator">
+        <div class="indicator level1 hidden" data-option-id="match" data-balloon-pos="up">
+          <i class="fas fa-fw fa-check "></i>
+        </div>
+        
+        <div class="indicator level-1 hidden" data-option-id="mismatch" data-balloon-pos="up">
+          <i class="fas fa-fw fa-times "></i>
+        </div>
+        </div></div> <div class="inputAndIndicator"><input type="password" class="passwordInput" placeholder="password" autocomplete="new-password" name="new-password"><div class="statusIndicator">
+        <div class="indicator level1 hidden" data-option-id="good" data-balloon-pos="up">
+          <i class="fas fa-fw fa-check "></i>
+        </div>
+        
+        <div class="indicator level-1 hidden" data-option-id="short" data-balloon-pos="up">
+          <i class="fas fa-fw fa-times "></i>
+        </div>
+        
+        <div class="indicator level-1 hidden" data-option-id="long" data-balloon-pos="up">
+          <i class="fas fa-fw fa-times "></i>
+        </div>
+        
+        <div class="indicator level-1 hidden" data-option-id="weak" data-balloon-pos="up">
+          <i class="fas fa-fw fa-times "></i>
+        </div>
+        </div></div> <div class="inputAndIndicator"><input type="password" class="verifyPasswordInput" placeholder="verify password" autocomplete="verify-password" name="verify-password"><div class="statusIndicator">
+        <div class="indicator level1 hidden" data-option-id="match" data-balloon-pos="up">
+          <i class="fas fa-fw fa-check "></i>
+        </div>
+        
+        <div class="indicator level-1 hidden" data-option-id="mismatch" data-balloon-pos="up">
+          <i class="fas fa-fw fa-times "></i>
+        </div>
+        </div></div> <button type="submit"><i class="fas fa-user-plus"></i> Sign Up</button></form></div>
+
+    <script>
+        // Add your JavaScript code here
+        document.getElementById("myButton").addEventListener("click", function() {
+            alert("Hello from JavaScript!");
+        });
+        document.getElementById("logoutbutton").addEventListener("click", function() {
+        window.location.href = "{% url 'baselogout'%}";
+        setTimeout(function() {
+                window.location.href = "{% url 'baselogin'%}";
+            }, 1000); // 2000 milliseconds = 2 seconds
+    });
+
+    </script>
+    {% if user.is_superuser %}
+    <p><a href="https://smart-ukff.onrender.com/admin/">welcom Admin panal</a></p>
+    {% endif %}
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

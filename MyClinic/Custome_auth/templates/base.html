@@ -1,0 +1,111 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>MyClinic</title>
+    <meta name="description" content="A brief description" />
+    <meta
+      name="author"
+      content="clinic app"
+    />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Load favicon -->
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'img/facicon.ico' %}"
+    />
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla&family=Markazi+Text:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  <style>
+    /* Additional custom styles can be added here */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url('https://mdbootstrap.com/img/new/textures/full/175.jpg');
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .news {
+        margin-top: 20px;
+    }
+
+    @media screen and (max-width: 600px) {
+        /* Styles for screens with a max width of 600px (e.g., mobile phones) */
+        h1 {
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        .news {
+            margin-top: 10px;
+        }
+    }
+    .background_imge {
+    background-image: url('/static/img/back.png');
+    background-size: cover; /* Scale the background image to cover the entire container */
+    background-repeat: no-repeat; /* Prevent repeating the background */
+    background-attachment: fixed; /* Fixed background to the viewport */
+    /* You can add more styles as needed */
+}
+
+  </style>
+</head>
+<body>
+    <section class="text-center">
+        <!-- Background image -->
+        <div class="p-5 bg-image" style="
+              background-image: url('/static/img/back.jpg');
+              height: 300px;
+              "></div>
+        <!-- Background image -->
+      
+        <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+              margin-top: -100px;
+              background: hsla(0, 0%, 100%, 0.8);
+              backdrop-filter: blur(30px);
+              ">
+          <div class="card-body py-5 px-md-5">
+      
+            <div class="row d-flex justify-content-center">
+              <div class="col-lg-8">
+                {% block content %} 
+
+                {% endblock %}
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    <!-- Bootstrap JS and jQuery (optional, for Bootstrap components) -->
+    {% block stylecontent %} 
+                
+    {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

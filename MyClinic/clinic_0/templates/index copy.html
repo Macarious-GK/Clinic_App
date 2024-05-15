@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+      <title>MyClinic</title>
+      <meta name="description" content="A brief description" />
+      <meta
+        name="author"
+        content="clinic app"
+      />
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  
+      <!-- Load favicon -->
+      <link
+        rel="shortcut icon"
+        type="image/png"
+        href="{% static 'img/facicon.ico' %}"
+      />
+    <!-- Include your CSS files here -->
+    <link
+      rel="preload"
+      as="style"
+      href="{% static 'css/style.css' %}"
+      onload="this.rel = 'stylesheet'"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla&family=Markazi+Text:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <header>
+  <img src="{% static 'img/header.PNG' %}" />
+  </header>
+    <nav>
+      <ul>
+        <li><a href="{% url 'home' %}">Welcome {{user}}, it's nice to have you back! Your last login: {{user.last_login}}</a></li>
+        
+      </ul>
+    </nav>
+<body>
+
+<section>
+    <article id="hero">
+      <h1 class="heading_shadow">MyClinic</h1>
+      <p>
+        Doctor Info here !!
+      </p>
+      <a href="#" class="cta"> Doctor Info </a>
+    </article>
+</section>
+
+<section>
+  <article>
+    <h2>Create Patient</h2>
+    <img src="{% static 'img/create_patient.png' %}">
+   
+    <p>
+      <a href="#" class="cta" style="color: black;">New Patient</a>
+    </p>
+  </article>
+  <article>
+    <h2>Patient History</h2>
+    <img src="{% static 'img/p.svg' %}">
+    
+    <p>
+      <a href="#"  class="cta" style="color: black;">Patient Records</a>
+    </p>
+  </article>
+  <article>
+    <h2>Statistics & Finance</h2>
+    <img style="color: black; border-radius: 10px; " src="{% static 'img/stats.jpg' %}">
+    
+    <p>
+      <a href="#"  class="cta" style="color: black; border-radius: 10px;" >Statistics & Finance</a>
+    </p>
+  </article>
+</section>
+
+<footer>
+    <article>
+        <img src="{% static 'img/footer.PNG' %}" alt="Clinic Logo" />
+    </article>
+    <article class="footer-info">
+        <div >
+            <p>G_S_Clinic</p>
+            <address>
+                123 Clinic Street,<br>
+                City, State, ZIP<br>
+                Country
+            </address>
+            <p>Phone: 123-456-7890</p>
+            <p>Email: info@g_s_clinic.com</p>
+        </div>
+    </article>
+</footer>
+
+</body>
+</html>
