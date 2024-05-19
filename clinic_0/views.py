@@ -70,6 +70,8 @@ def list(request):
 
     if name_query:
         queryset = queryset.filter(name__icontains=name_query)
+    if name_query.lower() == 'all':
+        queryset = Patient.objects.all()
     if date_query:
         queryset = queryset.filter(date_of_visit=date_query)
     if category_query:
@@ -83,6 +85,12 @@ def list(request):
     total_fees = queryset.aggregate(Sum('examination_or_operation_fees'))['examination_or_operation_fees__sum']
     total_count = queryset.count()
     if totalnum != total_count:
+        context = {
+            'patients': serializer.data,
+            'total_fees': total_fees,
+            'total_count': total_count,
+        }
+    elif name_query.lower() == 'all':
         context = {
             'patients': serializer.data,
             'total_fees': total_fees,
