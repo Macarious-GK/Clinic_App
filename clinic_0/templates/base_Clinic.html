@@ -40,8 +40,11 @@
   </header>
     <nav>
       <ul>
-        <li><a href="{% url 'home' %}">Welcome {{user}}. Nice to have u back! last login: {{user.last_login}}</a></li>
-        <li><a href="{% url 'baselogout' %}">**Logout, see u soon**</a></li>
+        <li><a href="{% url 'home' %}">Welcome {{user}}. Nice to have u back!</a></li>
+
+        <!-- <li><a href="{% url 'home' %}">Welcome {{user}}. Nice to have u back! last login: {{user.last_login}}</a></li> -->
+        <li><a href="{% url 'home' %}">Retern Home Here!!</a></li>
+        <li><a href="{% url 'baselogout' %}">Logout From here!!</a></li>
       </ul>
     </nav>
 <body>
