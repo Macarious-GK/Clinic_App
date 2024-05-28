@@ -60,6 +60,7 @@ class All_patients( ListCreateAPIView):
 
 @login_required()
 def list(request):
+
     queryset = Patient.objects.all()
     totalnum = queryset.count()
     name_query  = request.GET.get('name')
@@ -90,7 +91,7 @@ def list(request):
             'total_fees': total_fees,
             'total_count': total_count,
         }
-    elif str(name_query).lower() == 'all':
+    elif str(name_query).lower() == 'all' and request.user.is_superuser:
         context = {
             'patients': serializer.data,
             'total_fees': total_fees,
