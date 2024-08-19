@@ -92,10 +92,10 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-import dj_database_url
-database_url = os.environ.get("DATABASE_URL")
-# DATABASES ["default"] = dj_database_url.parse("postgres://clinic_db_2y21_user:kWmhm3aGC2VfJFC7EzJ36qidcs4kLl10@dpg-cp2jh0fsc6pc73a6sic0-a.oregon-postgres.render.com/clinic_db_2y21")
-DATABASES ["default"] = dj_database_url.parse(database_url)
+# import dj_database_url
+# database_url = os.environ.get("DATABASE_URL")
+# # DATABASES ["default"] = dj_database_url.parse("postgres://clinic_db_2y21_user:kWmhm3aGC2VfJFC7EzJ36qidcs4kLl10@dpg-cp2jh0fsc6pc73a6sic0-a.oregon-postgres.render.com/clinic_db_2y21")
+# DATABASES ["default"] = dj_database_url.parse(database_url)
 
 
 # Password validation
